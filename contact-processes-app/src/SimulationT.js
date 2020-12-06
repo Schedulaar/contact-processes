@@ -21,14 +21,6 @@ const d = 6
 let nNodes = 0
 for (let i = 0; i < LAYERS; i++) nNodes += Math.pow(d, i)
 const infected = new Array(nNodes)
-
-
-const until = d + 1
-for (let i = 0; i < until; i++)
-  infected[i] = 1
-for (let i = until; i < nNodes; i++)
-  infected[i] = 0;
-
 const delx = (1920 + 2 * 50) / (LAYERS - 1)
 
 
@@ -70,6 +62,7 @@ class SimulationT extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => window.requestAnimationFrame(this.update), 1000 / FPS);
+    this.refresh()
   }
 
   play = () => this.setState({pause: false})
@@ -106,7 +99,7 @@ class SimulationT extends React.Component {
     for (let i = 0; i < nNodes; i++)
       infected[i] = 1;
 
-    const until = d + 1
+    const until = 1 + 6
     for (let i = 0; i < until; i++)
       infected[i] = 1
     for (let i = until; i < nNodes; i++)
