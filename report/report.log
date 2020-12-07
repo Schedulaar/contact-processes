@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.21)  5 DEC 2020 17:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.21)  7 DEC 2020 01:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -608,7 +608,10 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip54
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/amsaddr/amsaddr.sty
+\c@g@author=\count121
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
@@ -634,15 +637,15 @@ Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count121
-\calc@Bcount=\count122
+\calc@Acount=\count122
+\calc@Bcount=\count123
 \calc@Adimen=\dimen126
 \calc@Bdimen=\dimen127
 \calc@Askip=\skip55
 \calc@Bskip=\skip56
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count123
+\calc@Ccount=\count124
 \calc@Cskip=\skip57
 )
 (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
@@ -652,7 +655,7 @@ LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count124
+\g_MT_multlinerow_int=\count125
 \l_MT_multwidth_dim=\dimen128
 \origjot=\skip58
 \l_MT_shortvdotswithinadjustabove_dim=\dimen129
@@ -721,10 +724,10 @@ ex
 \pgf@yc=\dimen146
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count125
-\c@pgf@countb=\count126
-\c@pgf@countc=\count127
-\c@pgf@countd=\count128
+\c@pgf@counta=\count126
+\c@pgf@countb=\count127
+\c@pgf@countc=\count128
+\c@pgf@countd=\count129
 \t@pgf@toka=\toks36
 \t@pgf@tokb=\toks37
 \t@pgf@tokc=\toks38
@@ -743,8 +746,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count129
-\pgfsyssoftpath@bigbuffer@items=\count130
+\pgfsyssoftpath@smallbuffer@items=\count130
+\pgfsyssoftpath@bigbuffer@items=\count131
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
@@ -758,7 +761,7 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen147
-\pgfmath@count=\count131
+\pgfmath@count=\count132
 \pgfmath@box=\box32
 \pgfmath@toks=\toks39
 \pgfmath@stack@operand=\toks40
@@ -782,7 +785,7 @@ tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
 thmetics.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count132
+\c@pgfmathroundto@lastzeros=\count133
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
 x
@@ -820,7 +823,7 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box33
 \pgf@hbox=\box34
 \pgf@layerbox@main=\box35
-\pgf@picture@serial@count=\count133
+\pgf@picture@serial@count=\count134
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
@@ -853,7 +856,7 @@ File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen171
-\pgf@sys@shading@range@num=\count134
+\pgf@sys@shading@range@num=\count135
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
@@ -910,7 +913,7 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count135
+\pgf@plot@mark@count=\count136
 \pgfplotmarksize=\dimen176
 )
 \tikz@lastx=\dimen177
@@ -923,18 +926,18 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikz@figbox@bg=\box39
 \tikz@tempbox=\box40
 \tikz@tempbox@bg=\box41
-\tikztreelevel=\count136
-\tikznumberofchildren=\count137
-\tikznumberofcurrentchild=\count138
-\tikz@fig@count=\count139
+\tikztreelevel=\count137
+\tikznumberofchildren=\count138
+\tikznumberofcurrentchild=\count139
+\tikz@fig@count=\count140
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count140
-\pgfmatrixcurrentcolumn=\count141
-\pgf@matrix@numberofcolumns=\count142
+\pgfmatrixcurrentrow=\count141
+\pgfmatrixcurrentcolumn=\count142
+\pgf@matrix@numberofcolumns=\count143
 )
-\tikz@expandcount=\count143
+\tikz@expandcount=\count144
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
@@ -950,8 +953,8 @@ Package: pgfplots 2017/06/05 v1.15 Data Visualization (1.15)
 \t@pgfplots@tokb=\toks45
 \t@pgfplots@tokc=\toks46
 \pgfplots@tmpa=\dimen183
-\c@pgfplots@coordindex=\count144
-\c@pgfplots@scanlineindex=\count145
+\c@pgfplots@coordindex=\count145
+\c@pgfplots@scanlineindex=\count146
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
 .tex))
@@ -967,7 +970,7 @@ Package pgfplots: loading complementary arithmetics for your pgf version...
 gfsupp_pgflibraryfpu.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
 gfsupp_pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count146
+\c@pgfmathroundto@lastzeros=\count147
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
@@ -976,13 +979,13 @@ tructure.code.tex)
 tructureext.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
 .code.tex
-\c@pgfplotsarray@tmp=\count147
+\c@pgfplotsarray@tmp=\count148
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
 x.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
 d.code.tex
-\c@pgfplotstable@counta=\count148
+\c@pgfplotstable@counta=\count149
 \t@pgfplotstable@a=\toks47
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
@@ -995,7 +998,7 @@ de.tex))
 .tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
 fshading.code.tex
-\c@pgfplotslibrarysurf@no=\count149
+\c@pgfplotslibrarysurf@no=\count150
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
 shading.pgfsys-pdftex.def)))
@@ -1027,7 +1030,7 @@ e.tex
 \pgfdecoratedinputsegmentcompleteddistance=\dimen186
 \pgfdecoratedinputsegmentremainingdistance=\dimen187
 \pgf@decorate@distancetomove=\dimen188
-\pgf@decorate@repeatstate=\count150
+\pgf@decorate@repeatstate=\count151
 \pgfdecorationsegmentamplitude=\dimen189
 \pgfdecorationsegmentlength=\dimen190
 )
@@ -1041,7 +1044,7 @@ decorations.pathmorphing.code.tex))
 zlibrarydecorations.pathreplacing.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
 decorations.pathreplacing.code.tex))
-\pgfplots@numplots=\count151
+\pgfplots@numplots=\count152
 \pgfplots@xmin@reg=\dimen191
 \pgfplots@xmax@reg=\dimen192
 \pgfplots@ymin@reg=\dimen193
@@ -1059,7 +1062,7 @@ File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
 ))) (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@colwidth=\skip59
-\multirow@cntb=\count152
+\multirow@cntb=\count153
 \multirow@dima=\skip60
 \bigstrutjot=\dimen197
 )
@@ -1075,12 +1078,12 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \cmidrulesep=\dimen262
 \cmidrulekern=\dimen263
 \defaultaddspace=\dimen264
-\@cmidla=\count153
-\@cmidlb=\count154
+\@cmidla=\count154
+\@cmidlb=\count155
 \@aboverulesep=\dimen265
 \@belowrulesep=\dimen266
-\@thisruleclass=\count155
-\@lastruleclass=\count156
+\@thisruleclass=\count156
+\@lastruleclass=\count157
 \@thisrulewidth=\dimen267
 )
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
@@ -1099,32 +1102,37 @@ s
 \f@nch@O@olf=\skip68
 \f@nch@O@orf=\skip69
 )
-\c@proposition=\count157
-\c@theorem=\count158
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count158
+)
 
+Package amsthm Warning: Unknown theoremstyle `theorem' on input line 43.
+
+\c@theorem=\count159
 \bibstyle{plain}
 (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Try loading font information for U+msa on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Try loading font information for U+msa on input line 65.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 48.
+LaTeX Font Info:    Try loading font information for U+msb on input line 65.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1164,18 +1172,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box43
-Package hyperref Info: Link coloring OFF on input line 48.
+Package hyperref Info: Link coloring OFF on input line 65.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count159
+\c@section@level=\count160
 )
-LaTeX Info: Redefining \ref on input line 48.
-LaTeX Info: Redefining \pageref on input line 48.
-LaTeX Info: Redefining \nameref on input line 48.
+LaTeX Info: Redefining \ref on input line 65.
+LaTeX Info: Redefining \pageref on input line 65.
+LaTeX Info: Redefining \nameref on input line 65.
 
 (./report.out) (./report.out)
 \@outlinefile=\write4
@@ -1184,16 +1192,16 @@ LaTeX Info: Redefining \nameref on input line 48.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count160
+\scratchcounter=\count161
 \scratchdimen=\dimen268
 \scratchbox=\box44
-\nofMPsegments=\count161
-\nofMParguments=\count162
+\nofMPsegments=\count162
+\nofMParguments=\count163
 \everyMPshowfont=\toks48
-\MPscratchCnt=\count163
+\MPscratchCnt=\count164
 \MPscratchDim=\dimen269
-\MPnumerator=\count164
-\makeMPintoPDFobject=\count165
+\MPnumerator=\count165
+\makeMPintoPDFobject=\count166
 \everyMPtoPDFconversion=\toks49
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1217,52 +1225,58 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.15} into 
 your preamble.
- on input line 48.
+ on input line 65.
 
-(./graphical-representation.tex) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdft
-ex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 108.
- [2pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
- has been already used, duplicate ignored
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 69.
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./graphical-represent
+ation.tex) [2pdfTeX warning (ext4): destination with the same identifier (name{
+figure.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.108 \end{document}
-                    ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 108.
+l.159 
+      ] [3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 191.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 191.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 108.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 108.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 191.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 191.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: D75350C0D0FE2AB601657AFDD4B2AA67;328.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
+(rerunfilecheck)             Checksum: 13DBFE0AE3D6E82AF40BAB14B898855A;268.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 191.
  ) 
 Here is how much of TeX's memory you used:
- 28146 strings out of 492982
- 660674 string characters out of 6134895
- 895431 words of memory out of 5000000
- 31071 multiletter control sequences out of 15000+600000
- 16376 words of font info for 49 fonts, out of 8000000 for 9000
+ 28503 strings out of 492982
+ 665327 string characters out of 6134895
+ 894802 words of memory out of 5000000
+ 31409 multiletter control sequences out of 15000+600000
+ 17465 words of font info for 51 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 62i,12n,96p,723b,684s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,12n,96p,887b,659s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.6
-00pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti090
-0.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti
-1095.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/e
-ccc1095.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecrm1095.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappe
-n/ec/ecrm0900.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jkna
-ppen/ec/ecbx1095.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on report.pdf (2 pages, 115722 bytes).
+00pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt090
+0.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
+0900.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/e
+cti0900.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecti1095.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jknappe
+n/ec/eccc1095.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/jkna
+ppen/ec/ecrm1095.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecbx0900.600pk> </home/michael/.texlive2017/texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecbx1095.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on report.pdf (3 pages, 158059 bytes).
 PDF statistics:
- 238 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 337 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
+ 15 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
