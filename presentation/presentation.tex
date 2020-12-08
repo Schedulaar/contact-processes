@@ -1,0 +1,620 @@
+
+\documentclass[envcountsect, aspectratio=149]{beamer}
+\usetheme[headheight=0em, logo=none, themepath=beamercolorthemefibeamer, nofonts]{fibeamer}
+\usepackage{beamercolorthemefibeamer}
+\usepackage[utf8]{inputenc} % for input encoding
+\usepackage[german]{babel} % for german localization
+\usepackage{colonequals} % for :=
+\usepackage{graphicx} % for \includegraphics
+\usepackage{wrapfig} % for floating images to the right
+\usepackage{tikz}
+\usepackage{esvect}
+\usepackage{tabto}
+\usepackage{enumitem}
+\usepackage{mathabx}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,snakes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+
+%-------------------------------------------------------------------------------
+% Hilfreiche Befehle
+%-------------------------------------------------------------------------------
+\newcommand{\betrag}[1]{\lvert #1 \rvert}	        % Betrag
+\providecommand*{\Lfloor}{\left\lfloor}                 % gro\ss{}es Abrunden
+\providecommand*{\Rfloor}{\right\rfloor}                % gro\ss{}es Abrunden
+\providecommand*{\Floor}[1]{\Lfloor #1 \Rfloor}         % gro\ss{}es ganzes Abrunden
+\providecommand*{\Ceil}[1]{\left\lceil #1 \right\rceil} % gro\ss{}es ganzes Aufrunden
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\firstNumbers}[1]{[#1]}
+\newcommand{\transpose}{^\intercal}
+\newcommand{\subjectTo}{\textbf{s.t.}}
+\newcommand{\MIPR}{MIP\textsuperscript{*}}
+\newcommand{\MIPI}{MIP}
+\newcommand{\oBdA}{oBdA.}
+\newcommand{\rang}{\operatorname{rang}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert_\infty}
+\newcommand{\zero}{0}
+\newcommand{\todo}[1]{{\color{red}{\emph{TODO: }}#1}}
+\newcommand{\one}{\mathbbm{1}}
+\newcommand{\eq}[1]{{\operatorname{eq}(#1)}}
+\newcommand{\co}[1]{\operatorname{co}(#1)}
+
+
+\makeatletter
+\newcommand*{\da@rightarrow}{\mathchar"0\hexnumber@\symAMSa 4B }
+\newcommand*{\da@leftarrow}{\mathchar"0\hexnumber@\symAMSa 4C }
+\newcommand*{\xdashrightarrow}[2][]{%
+  \mathrel{%
+    \mathpalette{\da@xarrow{#1}{#2}{}\da@rightarrow{\,}{}}{}%
+  }%
+}
+\newcommand{\xdashleftarrow}[2][]{%
+  \mathrel{%
+    \mathpalette{\da@xarrow{#1}{#2}\da@leftarrow{}{}{\,}}{}%
+  }%
+}
+\newcommand*{\da@xarrow}[7]{%
+  % #1: below
+  % #2: above
+  % #3: arrow left
+  % #4: arrow right
+  % #5: space left 
+  % #6: space right
+  % #7: math style 
+  \sbox0{$\ifx#7\scriptstyle\scriptscriptstyle\else\scriptstyle\fi#5#1#6\m@th$}%
+  \sbox2{$\ifx#7\scriptstyle\scriptscriptstyle\else\scriptstyle\fi#5#2#6\m@th$}%
+  \sbox4{$#7\dabar@\m@th$}%
+  \dimen@=\wd0 %
+  \ifdim\wd2 >\dimen@
+    \dimen@=\wd2 %   
+  \fi
+  \count@=2 %
+  \def\da@bars{\dabar@\dabar@}%
+  \@whiledim\count@\wd4<\dimen@\do{%
+    \advance\count@\@ne
+    \expandafter\def\expandafter\da@bars\expandafter{%
+      \da@bars
+      \dabar@ 
+    }%
+  }%  
+  \mathrel{#3}%
+  \mathrel{%   
+    \mathop{\da@bars}\limits
+    \ifx\\#1\\%
+    \else
+      _{\copy0}%
+    \fi
+    \ifx\\#2\\%
+    \else
+      ^{\copy2}%
+    \fi
+  }%   
+  \mathrel{#4}%
+}
+\makeatother
+
+
+\setbeamertemplate{theorems}[numbered]
+\newtheorem{conjecture}[theorem]{Vermutung}
+\newtheorem{korollar}[theorem]{Korollar}
+\newtheorem{beispiel}[theorem]{Beispiel}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\definecolor{darkblue}{HTML}{00446B}
+\definecolor{darkgreen}{HTML}{006B44}
+
+\newcommand{\bigO}{\mathcal{O}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\newcommand{\size}[1]{\langle#1\rangle}
+\newcommand{\coloniff}{\vcentcolon\Longle ftrightarrow}
+
+
+
+\newcommand{\Cont}{C}
+\newcommand{\diff}{\,\mathrm{d}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\mathbb{P}}
+
+\DeclareMathOperator{\LGen}{\mathcal{L}}
+
+
+\DeclarePairedDelimiter\trin{\lvert\lvert\lvert}{\rvert\rvert\rvert}%
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+\makeatletter
+\makeatother
+\useoutertheme{infolines}
+\newenvironment{noheadline}{
+	\setbeamertemplate{headline}{}
+}{}
+\newenvironment{nofootline}{
+\setbeamertemplate{footline}{}
+}{}
+
+\setbeamersize{text margin left=2.7em, text margin right=2.7em}
+\setbeamertemplate{frametitle}{\insertframetitle}
+\setbeamercolor{block body}{fg=black!90}
+
+\setbeamerfont{title}{size=\huge}
+\setbeamertemplate{institute}{\insertinstitute}
+
+\AtBeginSection{
+	\begin{noheadline}
+		\begin{frame}
+		\vfill
+		\centering
+		\begin{beamercolorbox}[sep=8pt,center]{title}
+			\usebeamerfont{title}\insertsectionhead\par%
+		\end{beamercolorbox}
+		\vfill
+	\end{frame}
+	\end{noheadline}
+
+}
+
+\makeatletter
+\setbeamertemplate{footline}{%
+	\color{darkblue}% to color the progressbar
+	\small
+	\hfill{\insertframenumber\hspace{1.5em}}
+	\vspace{1em}
+
+
+	\hspace*{-\beamer@leftmargin}%
+	\rule{\beamer@leftmargin}{1pt}%
+	\rlap{\rule{\dimexpr\numexpr0\insertframenumber\dimexpr
+			\textwidth\relax/\numexpr0\inserttotalframenumber}{1pt}}
+	% next 'empty' line is mandatory!
+
+	\vspace{0\baselineskip}
+	{}
+}
+
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+\title{\LARGE The Contact Process}
+\subtitle{Interacting Particle Systems}
+\author{~\\Michael Markl \\ December 8, 2020}
+\date{23.01.2020}
+\renewcommand{\[}{
+	\setlength\abovedisplayskip{0.5ex}
+	\setlength{\belowdisplayskip}{0.5ex}
+	\setlength{\abovedisplayshortskip}{0.5ex}
+	\setlength{\belowdisplayshortskip}{0.5ex}\begin{equation*}}
+
+\institute{Insitut für Mathematik der Universität Augsburg\\Diskrete Mathematik, Optimierung und Operations Research}
+
+\input{setupfont}
+
+%\setlist[enumerate]{topsep=0.5ex,itemsep=0ex,partopsep=0ex,parsep=0.8ex}
+
+
+\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+
+	\setcounter{framenumber}{-1}
+
+	\begin{nofootline}
+		\frame{\titlepage}
+	\end{nofootline}
+
+	%\begin{frame}{Outline}\tableofcontents\end{frame}
+
+	\section{What is a Contact Process?}
+	\subsection{Introduction and Preliminaries}
+	
+	\begin{frame}
+		Let $G=(S,E)$ be a connected graph with bounded degree $\deg_{\max}$.
+		
+		\pause\bigskip
+				
+		Flip rate for an infected set $\eta\in \mathcal{P}(S) \hat{=}\{0,1\}^S $ at site $x\in S$:
+		$$c(x,\eta) \coloneqq \begin{cases}
+			1, & \text{if $x\in\eta$},\\
+			\lambda \cdot \abs{\{ y\in \eta \mid x\sim y \}}, & \text{if $x \notin \eta$.}
+		\end{cases}
+		$$
+		
+		\pause\bigskip
+		
+		Generator: $\displaystyle \LGen f(\eta) = \sum_{x\in S} c(x,\eta) \left( f(\eta^x) - f(\eta) \right)$
+		
+		\pause\bigskip
+		
+		\begin{align*}
+		M &= \sup_{x\in S} \sum_{u:x\neq u} \gamma(x,u)\onslide<6->{ = \lambda \cdot \deg_{\max} } \\
+		\gamma(x,u) &= \sup_{\eta\in\Omega}\, \abs{ c(x,\eta^u) - c(x,\eta) }\onslide<5->{ = \begin{cases}
+			\lambda & \text{if $u\sim x$},\\
+			0 & \text{if $u\nsim x$}.
+		\end{cases}} \\[0.5em]
+		\onslide<7-> {
+			\epsilon &= \inf_{x\in S, \eta \in \Omega} c(x,\eta) + c(x,\eta^x)}
+		\onslide<8->{ = 1}
+		\end{align*}
+	\end{frame}
+	
+	\begin{frame}{Invariant Measures}
+		\pause
+		A contact process is an \emph{attractive} spin system:
+		If $\eta\subseteq \zeta$, then
+			$$x \in \eta\, \Rightarrow\, c(x,\eta) \leq c(x,\zeta),\hspace{2em} x\notin\zeta \,\Rightarrow\, c(x,\eta) \geq c(x,\zeta) $$
+			
+		\bigskip\pause
+		Hence, we have upper and lower invariant measures:
+		$$\overline{\nu} \coloneqq \lim_{t\to\infty} \delta_1 S_t, \hspace{2em} \underline{\nu} \coloneqq \lim_{t\to\infty} \delta_0 S_t\pause = \delta_0 $$ 
+		
+		\bigskip\pause
+		The $M<\epsilon$ criterion implies: If $\lambda < \deg_{\max}^{-1}$, then $\mathcal{I} = \{ \delta_0 \}$.
+	\end{frame}
+	
+	\section{To Be or Not to Be}
+	\subsection{Survival or Extinction}
+	
+	\begin{frame}{Survival or Extinction}
+		\begin{definition}[Survival]
+			A contact process $\eta(t)$ \emph{survives (weakly)} if there is an $x\in S$ such that $$\P_{\{x\}} (\forall t \geq0 : \eta_t \neq \emptyset) > 0.$$
+			\pause
+			It \emph{survives strongly} if there is an $x\in S$ such that
+			$$\P_{\{x\}}(x\in\eta_t \text{ for a sequence $t$'s increasing to $\infty$})> 0.$$\pause
+			Otherwise the process \emph{dies out}.
+		\end{definition}
+		\pause
+		\begin{proposition}[Critical Values]
+			There exist $\lambda_c \leq \lambda_s$ in $[0,\infty]$ such that the contact process
+			\begin{itemize}[label=$\bullet$]
+				\item survives weakly iff $\lambda > \lambda_c$,
+				\item survives strongly iff $\lambda > \lambda_s$.
+			\end{itemize}
+		\end{proposition}
+	\end{frame}
+	
+	\begin{frame}{Infection Process in Graphical Representation}
+		\begin{columns}
+		\begin{column}{0.48\textwidth}
+			A path in $S\times [0,\infty)$ is \emph{active}, if
+			\begin{itemize}[label=$\bullet$]
+				\item it only walks upwards in time,
+				\item it switches site only according to infection arrows,
+				\item it does not pass any heal events.
+			\end{itemize}
+			\bigskip
+			\onslide<4->{
+			If $\eta$ is initially infected, then
+			\vspace{-1em}\begin{align*}
+				\eta_t = \{ x\in S \mid\, &\exists \text{ active path from $(x,0)$}\\
+				&\text{to (y,t) for some $x\in\eta$} \}
+			\end{align*}}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{tikzpicture}
+				
+				\foreach \x in {-2, -1, ..., 2} {
+					\node at (\x,0) [below] {\x};
+					\draw (\x,0) -- (\x, 5);
+				}
+				
+				\draw[->] (-2, 3.9) -> (-1,3.9);
+				\draw[->] (-1, 2.7) -> (-2,2.7);
+				\draw[->] (-1, 1.0) -> (-2,1.0);
+				\draw[->] (-1, 4.4) -> (0,4.4);
+				\draw[->] (-1, 1.4) -> (0,1.4);
+				\draw[->] (0, 2.2) -> (-1,2.2);
+				\draw[->] (0, 2.7) -> (1,2.7);
+				\draw[->] (1, 3.6) -> (0,3.6);
+				\draw[->] (1, 2.5) -> (2,2.5);
+				
+				\node at (-2.7, 5) {$t$};
+				\onslide<2->{
+				\draw[red, line width=1pt] (0,0) -- (0,2.2) -- (-1,2.2) -- (-1,2.7) -- (-2,2.7) -- (-2,3.9) -- (-1,3.9) -- (-1,4.4) -- (0,4.4) --(0,5.0);}
+				\onslide<3->{
+				 \draw[red, line width=1pt] (0,0) -- (0,2.2) -- (-1,2.2) -- (-1,2.7) -- (-2,2.7) -- (-2,3.9) -- (-1,3.9) -- (-1,4.4) -- (0,4.4) --(0,5.0);
+				 \draw[red, line width=1pt] (0,0) -- (0,5);
+				 \draw[red, line width=1pt] (-1, 2.2) -- (-1,3.2);
+				 \draw[red, line width=1pt] (-1,3.9)--(-1,5);
+				 \draw[red, line width=1pt] (0, 2.7)--(1,2.7)--(1,3.8);
+ 				 \draw[red, line width=1pt] (1, 3.6)--(0,3.6);
+				}
+				
+								
+				\fill (-2,1.2) circle (1pt) node [right] {$\delta$};
+				\fill (-2,4.2) circle (1pt) node [right] {$\delta$};
+				
+				\fill (-1,0.8) circle (1pt) node [right] {$\delta$};
+				\fill (-1,3.2) circle (1pt) node [right] {$\delta$};
+				
+				\fill (1,1.1) circle (1pt) node [right] {$\delta$};
+				\fill (1,3.8) circle (1pt) node [right] {$\delta$};
+				
+				\fill (2,2.9) circle (1pt) node [right] {$\delta$};
+				
+				\draw[line width=2pt] (-2.7,0) -- (2.7,0);
+			\end{tikzpicture}
+		\end{column}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}
+			\addtocounter{theorem}{-1}
+			\begin{proposition}[Critical Values]
+				There exist $\lambda_c \leq \lambda_s$ in $[0,\infty]$ such that the contact process
+				\begin{itemize}[label=$\bullet$]
+					\item survives weakly iff $\lambda > \lambda_c$,
+					\item survives strongly iff $\lambda > \lambda_s$.
+				\end{itemize}
+			\end{proposition}
+			\emph{Proof.}
+			\pause
+			We show $\P_{\{x\}}(y\in \eta_t)$ is non-decreasing in $\lambda$ by a coupling argument.
+			
+			\pause Let $\eta(t)$, $\zeta(t)$ be contact processes with $\lambda_{\eta} \leq \lambda_{\zeta}$.
+			
+			\begin{columns}
+			\begin{column}{0.48\textwidth}
+				\begin{enumerate}[label=\arabic*)]
+					\onslide<4->{\item Put $\delta$'s at rate $1$.}
+					\onslide<5->{\item Put $\xrightarrow{\ \ \ \,}$~\,at rate $\lambda_\eta$.}
+					\onslide<6->{\item Put $\xdashrightarrow{}$ at rate $(\lambda_\zeta - \lambda_\eta)$.}
+				\end{enumerate}
+			\end{column}
+			\begin{column}{0.48\textwidth}
+			\begin{tikzpicture}
+				\draw[line width=2pt] (-2.7,0) -- (2.7,0);
+				
+				\foreach \x in {-2, -1, ..., 2} {
+					\draw (\x,0) -- (\x, 3.8);
+				}
+				
+				\onslide<4->{
+				\fill (-2,1.2) circle (1pt) node [right] {$\delta$};
+				
+				\fill (-1,0.8) circle (1pt) node [right] {$\delta$};
+				\fill (-1,3.2) circle (1pt) node [right] {$\delta$};
+				
+				\fill (1,1.1) circle (1pt) node [right] {$\delta$};
+				\fill (1,3.3) circle (1pt) node [right] {$\delta$};
+				
+				\fill (2,2.9) circle (1pt) node [right] {$\delta$};
+				}
+				\onslide<5->{
+				\draw[->] (-1, 2.7) -> (-2,2.7);
+				\draw[->] (-1, 1.0) -> (-2,1.0);
+
+				\draw[->] (0, 2.2) -> (-1,2.2);
+				\draw[->] (1, 2.5) -> (2,2.5);
+				}
+				\onslide<6->{
+				\draw[->, dashed] (-2, 3.6) -> (-1,3.6);
+				\draw[->, dashed] (-1, 1.4) -> (0,1.4);
+				\draw[->, dashed] (1, 3.6) -> (0,3.6);
+				}
+			\end{tikzpicture}
+			
+			\end{column}
+			\end{columns}
+			\vspace{0.5em}
+			\qed
+	\end{frame}
+	
+	\begin{frame}{Self Duality}
+	\begin{proposition}[Self Duality]
+		$\P_\eta(\eta_t \cap \zeta \neq \emptyset) = \P_\zeta(\eta\cap\zeta_t \neq \emptyset)$ holds for any $\eta,\zeta\in\{0,1\}^S$.
+	\end{proposition}
+	\pause 
+	\begin{columns}
+	\begin{column}{0.54\textwidth}
+	\emph{Proof.}
+	Construct dual process $\hat{\zeta}$ by
+	\vspace{-0.5em}
+	\begin{align*}
+		\hat{\zeta}_{t-s} = \{ x\in S \mid\,& \exists\text{ active path from $(x,s)$} \\[-0.3em]
+		& \text{to $(y,t)$ for some $y\in \zeta$} \}
+	\end{align*}
+	
+	\onslide<4->{
+	Now $\eta_t \cap \zeta \neq \emptyset \iff \hat{\zeta}_0 \cap \eta \neq \emptyset$.
+	}
+	
+	\onslide<5->{
+	\bigskip
+	$\hat{\zeta}_{t-s}$ is by distribution equal to $\zeta_s$.
+	
+	
+		\qed
+	}
+	
+	\vspace{5em}
+	
+	\end{column}
+	\begin{column}{0.42\textwidth}
+		\begin{tikzpicture}
+			
+			\foreach \x in {-2, -1, ..., 2} {
+				\node at (\x,0) [below] {\x};
+				\draw (\x,0) -- (\x, 5);
+			}
+			
+			\draw[->] (-2, 3.9) -> (-1,3.9);
+			\draw[->] (-1, 2.7) -> (-2,2.7);
+			\draw[->] (-2, 1.0) -> (-1,1.0);
+			\draw[->] (-1, 4.4) -> (0,4.4);
+			\draw[->] (-1, 1.4) -> (0,1.4);
+			\draw[->] (0, 2.2) -> (-1,2.2);
+			\draw[->] (0, 2.7) -> (1,2.7);
+			\draw[->] (1, 3.6) -> (0,3.6);
+			\draw[->] (2, 2.5) -> (1,2.5);
+			
+			\node at (-2.3, 5) {$t$};
+
+			\onslide<3->{
+		 	\draw[red, line width=1pt] (-1, 5) -- (-1,3.2);
+		 	\draw[red, line width=1pt] (-1, 3.9) -- (-2,3.9) -- (-2,1.5);
+		 	\draw[red, line width=1pt] (-2,2.7)--(-1,2.7)--(-1,0.8);
+		 	\draw[red, line width=1pt] (-1,1.0)--(-2,1.0)--(-2,0);
+			\draw[red, line width=1pt] (-1,2.2)--(0,2.2)--(0,0);
+			\draw[red, line width=1pt] (-1,1.4)--(0,1.4);
+			}
+			
+							
+			\fill (-2,1.5) circle (1pt) node [right] {$\delta$};
+			\fill (-2,4.2) circle (1pt) node [right] {$\delta$};
+			
+			\fill (-1,0.8) circle (1pt) node [right] {$\delta$};
+			\fill (-1,3.2) circle (1pt) node [right] {$\delta$};
+			
+			\fill (1,1.1) circle (1pt) node [right] {$\delta$};
+			\fill (1,3.8) circle (1pt) node [right] {$\delta$};
+			
+			\fill (2,2.9) circle (1pt) node [right] {$\delta$};
+			
+			\draw[line width=2pt] (-2.2,0) -- (2.2,0);
+		\end{tikzpicture}
+	\end{column}
+	\end{columns}
+	\end{frame}
+	
+	\begin{frame}
+		\begin{corollary}
+			For finite $\eta\in\{0,1\}^S$: $\P_\eta(\forall t\geq0: \eta_t \neq \emptyset) = \overline{\nu}(\{ \zeta\in \Omega \mid \eta \cap \zeta \neq \emptyset \})$
+			\pause\medskip
+			
+			Hence, the process dies iff $\mathcal{I} = \{ \delta_0 \}$. Therefore, $\lambda_c\geq \deg_{\max}^{-1} > 0$.
+		\end{corollary}
+	\end{frame}
+	
+	
+	\section{The Contact Process on Homogeneous Trees}
+	\subsection{Weak $\neq$ Strong}
+	
+	\begin{frame}{Homogeneous Tree}
+	\centering
+	\begin{tikzpicture}[every node/.style={scale=0.6}]
+	
+	\node[circle, draw=black, inner sep=2pt] (r) at (0,0) {-1};
+	
+	\node[circle, draw=black, inner sep=2pt] (0) at (1,-1) {0};
+	\node[circle, draw=black, inner sep=2pt] (1) at (1,1) {0};
+	
+	\node[circle, draw=black, inner sep=2pt] (00) at (2,-1.5) {1};
+	\node[circle, draw=black, inner sep=2pt] (01) at (2,-0.5) {1};
+	\node[circle, draw=black, inner sep=2pt] (10) at (2,0.5) {1};
+	\node[circle, draw=black, inner sep=2pt] (11) at (2,1.5) {1};
+	
+	\node[circle, draw=black, inner sep=2pt] (000) at (3,-1.75) {2};
+	\node[circle, draw=black, inner sep=2pt] (001) at (3,-1.25) {2};
+	\node[circle, draw=black, inner sep=2pt] (010) at (3,-0.75) {2};
+	\node[circle, draw=black, inner sep=2pt] (011) at (3,-0.25) {2};
+	\node[circle, draw=black, inner sep=2pt] (100) at (3,0.25) {2};
+	\node[circle, draw=black, inner sep=2pt] (101) at (3,0.75) {2};
+	\node[circle, draw=black, inner sep=2pt] (110) at (3,1.25) {2};
+	\node[circle, draw=black, inner sep=2pt] (111) at (3,1.75) {2};
+	
+	\draw (r) -- (0);
+	\draw (r) -- (1);
+	
+	\draw (0) -- (00);
+	\draw (0) -- (01);
+		
+	\draw (1) -- (10);
+	\draw (1) -- (11);
+	
+		
+	\draw (00) -- (000);
+	\draw (00) -- (001);
+			
+	\draw (01) -- (010);
+	\draw (01) -- (011);
+				
+	\draw (10) -- (100);
+	\draw (10) -- (101);
+					
+	\draw (11) -- (110);
+	\draw (11) -- (111);
+	
+	\end{tikzpicture}
+	
+		
+				\bigskip
+				
+		Every node has degree $d+1$.
+		
+	\end{frame}
+	
+	
+	\begin{frame}{Results for the Homogeneous Tree}
+		\begin{theorem}[Weak Survival]
+			On a homogeneous tree, we have
+			$$\frac{1}{d+1} \leq \lambda_c \leq \frac{1}{d-1}$$
+		\end{theorem}
+		\pause
+		\begin{theorem}[Bound for strong survival]
+			On a homogeneous tree, we have
+			$$\frac{1}{d+1} \leq \lambda_c \leq \frac{1}{d-1}$$
+			In particular, $\lambda_c < \lambda_s$ for $d\geq 6$.
+		\end{theorem}
+	\end{frame}
+	
+	
+	\begin{frame}{Important Tools}
+		\begin{definition}[Superharmonicity]
+		A function $f:\{0,1\}^S \to \R$ is \emph{superharmonic}, if $\E_\eta \abs{f(\eta_t)} < \infty$ and $\E_\eta f(\eta_t) \leq f(\eta)$ hold for all $t\geq0$ and $\eta\in\{0,1\}^S$.
+		\end{definition}
+		\pause
+		\begin{proposition}
+			If a nonconstant bounded superharmonic function $f$ satisfies $f(\emptyset) \geq f(\eta)$ for all $\eta\in\{0,1\}^S$, the process survives weakly.
+		\end{proposition}
+		\pause
+		\begin{proposition}
+			If $f:\{0,1\}^S \to \R$ is bounded and
+			$\left. \frac{\diff}{\diff t} \E_\eta f(\eta_t) \right|_{t=0} \leq 0,$
+			then $\E_\eta f(\eta_t)$ is decreasing in $t$.
+		\end{proposition}
+	\end{frame}
+	
+	\begin{frame}{Sketch of proof for $\lambda_c \leq (d-1)^{-1}$}
+		Define $f(\eta)\coloneqq \rho^{\abs{\eta}}$ for some $\rho\in (0,1)$.
+		
+		\pause\medskip
+		Calculate using $E_\eta\coloneqq \left\{ \{x,y\}\in E\mid x\in\eta, y\notin \eta \right\}$:
+		\begin{align*}
+		\left. \frac{\diff}{\diff t} \E_\eta f(\eta_t) \right|_{t=0} &= (\rho^{-1} \abs{\eta} - \lambda \cdot \abs{E_\eta}) (1-\rho) f(\eta) \\ \onslide<4->{&\leq \abs{\eta}(\rho^{-1} - \lambda(1-d))(1-\rho)f(\eta)}
+		\end{align*}
+		
+		\pause
+		
+		Bound $\abs{\E_\eta} \geq \abs{\eta} \cdot(d+1) - 2\cdot(\abs{\eta} - 1) = \eta(d-1) + 2 \geq \abs{\eta} (d-1)$
+		\pause\pause\medskip
+		
+		For $\displaystyle \rho=\frac{1}{\lambda (1-d)}$, $f$ is superharmonic due to Proposition 3.4.
+		\pause\medskip
+		
+		Proposition 3.5 yields weak survival.
+		
+		\qed
+\end{frame}
+	
+	\begin{noheadline}
+		\begin{frame}<presentation:0>[noframenumbering]
+			\cite{Liggett2010}
+			\cite{Liggett1999}
+		\end{frame}
+	
+		\begin{frame}{Literature}
+			\scriptsize
+			\bibliographystyle{acm}
+			\bibliography{literature}
+		\end{frame}
+	\end{noheadline}
+
+\end{document}

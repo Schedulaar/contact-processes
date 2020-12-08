@@ -1,0 +1,7 @@
+\babel@toc {german}{}
+\beamer@sectionintoc {1}{What is a Contact Process?}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Introduction and Preliminaries}{3}{0}{1}
+\beamer@sectionintoc {2}{To Be or Not to Be}{16}{0}{2}
+\beamer@subsectionintoc {2}{1}{Survival or Extinction}{17}{0}{2}
+\beamer@sectionintoc {3}{The Contact Process on Homogeneous Trees}{38}{0}{3}
+\beamer@subsectionintoc {3}{1}{Weak $\neq $ Strong}{39}{0}{3}
