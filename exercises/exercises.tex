@@ -1,0 +1,308 @@
+\documentclass[a4paper]{amsart} 
+\usepackage[top = 2.5cm, bottom = 2.5cm, left = 2.5cm, right = 2.5cm]{geometry} 
+
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithm,algpseudocode}
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsaddr}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multirow} 
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,bbm}
+\usepackage{cleveref}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage{mathtools}
+
+\usepackage{etoolbox}
+
+\DeclareMathOperator{\Ber}{Ber}
+
+
+\title{EXERCISES\\
+{\footnotesize INTERACTING PARTICLE SYSTEMS}}
+\author{Michael Markl}
+\email{michael.markl@uni-a.de}
+\date{December 15, 2020}
+
+\theoremstyle{theorem}
+\newtheorem{claim}{Claim}
+\renewcommand{\theoremautorefname}{Claim}
+\newcommand{\propositionautorefname}{Proposition}
+\newtheorem{proposition}[claim]{Proposition}
+
+\newtheorem{corollary}[claim]{Corollary}
+\newcommand{\corollaryautorefname}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[claim]{Definition}
+\bibliographystyle{plain}
+
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+\newcommand{\Cont}{C}
+\newcommand{\diff}{\,\mathrm{d}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\mathbb{P}}
+
+\DeclareMathOperator{\LGen}{\mathcal{L}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\trin{\lvert\lvert\lvert}{\rvert\rvert\rvert}%
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\begin{document}
+\pagestyle{plain}
+\maketitle
+
+\section*{Exercise 1 -- Discrete-Time Finite Markov Chains}
+
+A discrete-time Markov chain with finite state space $S\coloneqq \{ x_1, \dots, x_n \}$ is described by a matrix $P$ with non-negative entries $(P_{i,j})_{i,j\in S}$ with $\sum_{j} P_{i,j} = 1$ for all $i\in S$.
+The row $P(\cdot, i)$ can be interpreted as the jump distribution from $i$, i.e. the distribution of $X_{n+1}$, if $X_n = i$ holds.
+
+Functions on the state space $S$ are thought of as column vectors $f\in \R^S$, so that the vector $Pf \coloneqq (Pf(x_1), \dots, Pf(x_n))$ is the expectation of $f$ after one jump.
+Furthermore a probability distribution $\mu$ is a row vector $\R^S$, so that $\mu P$ gives the distribution of the position after one step where the initial position is distributed according to $\mu$.
+The power $P^k$ of $P$ corresponds to advancing $k$ steps, and hence $\mu P^k$ is the distribution of the position after $k$ steps with initial distribution $\mu$.
+
+A probability distribution is called \emph{invariant} for the chain $(X_n)$ if $\mu P = \mu$ holds.
+\medskip
+
+\begin{enumerate}[label=\alph*)]
+\item Let $\nu$ be any probability distribution on $S$ and consider $$\mu_n\coloneqq \frac{1}{n} \sum_{k=0}^{n-1} \nu P^{k}.$$
+
+\begin{claim}
+	For all $x\in S$, it holds $\abs*{\mu_nP(x) - \mu_n(x)} \leq \frac{2}{n}$.
+\end{claim}
+\begin{proof}
+	We calculate:
+	\begin{align*}
+		\abs{\mu_n P(x) - \mu_n (x)}
+		&= \abs*{\frac{1}{n} \left( \sum_{k=0}^{n-1}\nu P^{k+1}(x) - \sum_{k=0}^{n-1}\nu P^k(x) \right)}
+		= \abs*{\frac{1}{n} \left( \nu P^n(x) -\nu P^0(x) \right)} \\
+		&\leq \frac{1}{n} \left( \abs*{\nu P^n (x)} + \abs*{\nu(x)} \right)
+		\leq \frac{2}{n}
+	\end{align*}
+\end{proof}
+
+As the sequence $(\mu_n)_{n\in\N}$ is bounded in $[0,1]^S$, it follows that it has a convergent subsequence $(n_k)_{k\in\N}$ by the Bolzano-Weierstrass theorem.
+Now define $\mu \coloneqq \lim{k\to\infty} \mu_{n_k}$.
+\begin{claim}
+	The limit $\mu$ is an invariant distribution.
+\end{claim} 
+\begin{proof}
+	It is easy to show, that $\mu$ is indeed a probability distribution:
+	\begin{align*}
+		\sum_{x\in S} \mu(x)
+		&= \sum_{x\in S} \lim_{k\to\infty} \frac{1}{n_k} \sum_{i=0}^{n_k - 1} \nu P^k (x)
+		= \lim_{k\to\infty} \frac{1}{n_k} \sum_{i=0}^{n_k - 1} \sum_{x\in S} \nu P^k(x)
+		= \lim_{k\to\infty} \frac{1}{n_k} n_k = 1
+	\end{align*}
+	
+	The invariance now follows by the claim above:
+	\begin{align*}
+		\abs*{ \mu P(x) - \mu(x) }
+		&= \abs*{ \lim_{k\to\infty} \left(  \mu_{n_k}P (x) - \mu_{n_k} (x)  \right) } = 0
+	\end{align*}
+\end{proof}
+
+\pagebreak
+
+\item A discrete-time Markov chain is said to be \emph{irreducible}, if for all $i,j\in S$ there is a $k\geq 1$ such that $P^k(i,j) > 0$.
+
+\begin{claim}
+	If $\mu$ is an invariant distribution for an irreducible Markov chain, then $\mu(x) > 0$ for all $x\in S$.
+\end{claim}
+\begin{proof}
+	Let $\mu$ be an invariant distribution and $y\in S$ some state in which $\mu(y) > 0$ holds.
+	Let $x\in S$ be arbitrary and $k\geq 1$ such that $P^k(y,x) > 0$ which exists by the irreducibility.
+	As $\mu$ is invariant, we have $\mu = \mu P^k$ and hence $$\mu(x) = \sum_{z\in S} \mu(z)P^k(z,x) \geq \mu(y) P^k(y,x) > 0.$$
+\end{proof}
+
+
+\item Now, we can follow the main conclusion:
+\begin{claim}
+	An irreducible Markov chain on a finite state space has a unique invariant measure.
+\end{claim}
+\begin{proof}
+	The existence follows by Claim 2.
+	Let $\mu_1,\mu_2$ be two invariant measures and suppose $\mu_1 \neq \mu_2$.
+	By Claim 3, $\mu_1(x)$ and $\mu_2(x)$ are positive for any $x\in S$.
+	Now define $$
+	\alpha \coloneqq \min_{x\in S} \frac{\mu_1(x)}{\mu_2(x)}
+	\hspace{2em}\text{and}\hspace{2em}
+	\tilde{\mu} \coloneqq \frac{1}{1-\alpha} (\mu_1 - \alpha \mu_2).
+	$$
+	Because $\mu_1$ and $\mu_2$ are both probability distributions and $\mu_1\neq \mu_2$, there is some $x$ with $\mu_1(x) < \mu_2(x)$ and hence $\alpha \in (0, 1)$ and $\tilde{\mu}$ is well defined.
+	
+	Furthermore, $\tilde{\mu}$ is an invariant probability distribution, which can be concluded from the following three equations:
+	$$\sum_{x\in S} \tilde{\mu} (x) = \frac{1}{1-\alpha} \left(\sum_{x\in S} \mu_1(x) - \alpha\sum_{x\in S}\mu_2(x)\right) = 1,
+	$$
+	$$\tilde{\mu}(x) = \frac{\mu_1(x) - \alpha\mu_2(x)}{1- \alpha} \geq \frac{\mu_1(x) - \mu_1(x)}{1 - \alpha} = 0 \hspace{1em}\text{for all $x\in S$},$$
+	$$\tilde{\mu}P = \frac{1}{1-\alpha} (\mu_1 P - \alpha \mu_2 P) = \frac{1}{1 - \alpha} (\mu_1 - \alpha \mu_2) = \tilde{\mu}.$$
+	
+	Now, let $x\in S$ be a state such that $\mu_1(x) / \mu_2(x) = \alpha$.
+	Then $\tilde{\mu}(x) = 0$ is a contradiction to Claim 3 applied to $\tilde{\mu}$.
+	Therefore $\mu_1= \mu_2$ must hold.
+\end{proof}
+\end{enumerate}
+
+\clearpage
+
+\section*{Exercise 9 -- Discrete-Time Voter Model On The Complete Graph}
+
+
+
+The discrete-time version of the voter model on the complete graph $K_N$ works as follows:
+Start by attributing to each vertex an i.i.d. $\Ber(p)$ opinion and obtain the configuration $\eta_0\in \{0,1\}^N$.
+At each positive integer time, select one vertex $x\in K_N$ uniformly at random and update its opinion by selecting uniformly at random a neighboring vertex $y$ of $x$ and copying its opinion.
+
+\begin{enumerate}[label=\alph*)]
+	\item  Consider $X_k \coloneqq \sum_{x\in K_N} \eta_k(x)$ the number of vertices with opinion $1$ at time $k$.
+	\begin{claim}
+		$X_k$ is a Markov chain in $\{ 0, \dots, N \}$ with transition rates
+		$$p(x,x+1) = p(x, x-1) = \frac{(N-x) x}{N (N -1)}\eqqcolon q(x), \hspace{1em}p(x,x) = 1 - 2\frac{(N-x) x}{N (N -1)},$$
+		and $0$ everywhere else.
+	\end{claim}
+	\begin{proof}
+		Let $\eta_k(x)$ be the configuration of opinions of the vertices of $K_N$ at time $k$.
+		For each time step, there is at most one opinion, that might change.
+		Therefore, the probability for $\abs{X_{k+1} - X_k} > 1$ is $0$.
+		
+		The event $X_{k+1} = X_k + 1$ happens if and only if a vertex with opinion $0$ at time $k$ was updated to opinion $1$.
+		Such a vertex $x$ is chosen with probability $(N - X_k)/N$ and with probability $X_k / (N-1)$ its chosen neighbor has opinion $1$.
+		Therefore the probability for the event $X_{k+1} = X_k + 1$ is $\frac{(N-X_k)X_k}{N(N-1)}$.
+		
+		Conversely, the event $X_{k+1} = X_k - 1$ happens iff a vertex with opinion $1$ at time $k$ is updated to opinion $0$.
+		Such a vertex is chosen with probability $X_k/N$ and a neighboring vertex with opinion $0$ is chosen with probability $(N-X_k)/(N-1)$.
+		Again, this leads to a probability of $\frac{(N-X_k)X_k}{N(N-1)}$.
+		
+		The event $X_{k+1} = X_k$ happens iff no vertex was updated.
+		This happens only if the chosen neighbor vertex has the same opinion as the initially chosen vertex.
+		The counter event is one of the events above, hence we get a probability of $1 - 2\frac{(N-X_k)X_k}{N(N-1)}$.
+		
+		As these probabilities only depend on the value $X_k$, the Markov chain can be expressed only by the transition probability matrix as declared above.
+	\end{proof}
+	
+	\item Let $\tau \coloneqq \inf\{ k \geq 0 \mid X_k = 0 \text{~or~} X_k = N\}$.
+	\begin{claim}
+		Let $h_i\coloneqq \sum_{j=1}^i 1/j$ for $i\in\N$.
+		For all $k\in\{0, \dots, N\}$ it holds 
+		\begin{align*}
+		\E_k[\tau] \coloneqq \E[\tau \mid X_0 = k] = (N-1) \Big(k(h_{N-1} - h_{k-1}) + (N-k) (h_{N-1} - h_{N-k}) \Big)
+		\end{align*}
+	\end{claim}
+	\begin{proof}
+		We begin by defining $m(k)\coloneqq \E_k[\tau]$ for convenience.
+		The Markov property implies $$m(k) =\begin{cases}
+			0, &\text{if $k\in\{0, N\}$,} \\
+			1 + (m(k+1) + m(k-1))\cdot q(k) + m(k)\cdot (1-2q(k)), &\text{if $k\notin\{0,N\}$.}
+		\end{cases}$$
+		
+		This is a system of $N$ linear equations using $N$ variables.
+		For $k \notin\{0, N\}$ we have $q(k)\neq 0$ and we can equivalently express the equation as
+		\begin{align*}
+		m(k+1)
+		&= \frac{m(k) - 1 - m(k)\cdot(1-2q(k))}{q(k)} - m(k-1) = 2m(k) - m(k-1) - \frac{1}{q(k)},
+		\end{align*}
+		which is equivalent to 
+		\begin{align*}
+			m(k+1) - m(k) = m(k) - m(k-1)-\frac{1}{q(k)}.
+		\end{align*}
+		First we give a representation of all variables using $m(1)$:
+		
+		\pagebreak
+		
+		\vspace{1em}\noindent\textbf{Claim 6.1.}\emph{
+			For all $k\in\{0,\dots,N\}$, $m(k) = k\cdot m(1) - \sum_{i=1}^{k-1}\frac{k-i}{q(i)}$.}
+		\begin{proof}
+			We use induction over $k$, where $k=0$ is obvious.
+			For the induction step $k\mapsto k+1$ with $k<N$ we calculate
+			\begin{align*}
+				m(k+1)
+				&= m(1) + \sum_{i=1}^k \left( m(i+1) - m(i) \right)	
+				= m(1) + \sum_{i=1}^k \left( m(i) - m(i-1) - \frac{1}{q(i)}  \right)  \\
+				&= m(1) + m(k) - \sum_{i=1}^k \frac{1}{q(i)}
+				= (k+1) \cdot m(1) - \sum_{i=1}^{k-1} \frac{k-i}{q(i)} - \sum_{i=1}^k  \frac{1}{q(i)}\\
+				&= (k+1)\cdot m(1) + \sum_{i=0}^{k} \frac{k+1 - i}{q(i)},
+			\end{align*}
+			concluding the induction.
+		\end{proof}
+		
+		With the boundary condition $m(N) = 0$, we can compute $m(1)$ as 
+		$$m(1)
+		= \frac{1}{N}\sum_{i=1}^{N-1} \frac{N-i}{q(i)}
+		= \sum_{i=1}^{N-1} \frac{N-1}{i} = (N-1)h_{N-1}.$$
+		
+		Furthermore, for $k\in\{0,\dots, M\}$ we compute
+		\begin{align*}
+			\sum_{i=1}^{k-1} \frac{k-i}{q(i)}
+			&= (N-1)\sum_{i=1}^{k-1} \frac{(k-i) N}{(N-i) i}
+			= (N-1) \left( k\cdot \sum_{i=1}^{k-1}\frac{N}{(N-i) i} - \sum_{i=1}^{k-1} \frac{N}{N-i}       \right) \\
+			&= (N-1) \left(  k\cdot \sum_{i=1}^{k-1}\left( \frac{1}{N-i}+\frac{1}{i} \right) - N\cdot \left( h_{N-1} - h_{N-k} \right)   \right)\\
+			&= (N-1) \left( k\cdot(h_{N-1}-h_{N-k} + h_{k-1})- N\cdot \left( h_{N-1} - h_{N-k} \right)   \right) \\
+			&= (N-1) \left( k\cdot h_{k-1} - (N-k)\cdot(h_{N-1}-h_{N-k})\right).
+		\end{align*}
+		These two calculations now yield the result using Claim 6.1.
+	\end{proof}
+	
+	\begin{claim}
+		We can bound the expected stopping time by $$\max_k\E_k[\tau] \leq (N-1)^2.$$
+	\end{claim}
+	\begin{proof}
+		By Claim 6, we can compute
+		\begin{align*}
+			\E_k[\tau]
+			&= (N-1)\left( \sum_{i=k}^{N-1} \frac{k}{i} + \sum_{i=N-k+1}^{N-1} \frac{N-k}{i} \right) \\
+			&\leq (N-1)\Big( (N-1 - k + 1) + (N-1 - (N-k+1) + 1) \Big)\\
+			&=(N-1)(N-k + k - 1) = (N-1)^2
+		\end{align*}
+	\end{proof}
+	
+	
+	\item Now, we look at the probability of stopping in a configuration where everybody has opinion~$1$.
+	
+	\begin{claim}
+	If we initialize the process according to $\Ber(p)$, we have
+		$$\P_p[X_\tau = N] = p.$$
+	\end{claim}
+	\begin{proof}
+		We first observe, that $X_k$ is a martingale:
+		$$ \E[X_{k+1}\mid \mathcal{F}_k] = (X_k-1)q(k) + X_k(1-2 q(k)) + (X_k + 1)q(k) = X_k. $$
+		
+		As for every $k\notin\{0,N\}$ the probability to get to an absorbing state in $\{0, N\}$ in at most $N$ steps is positive, so the stopping time $\tau$ is almost surely finite.
+		Therefore, by the martingale property and writing $t\land \tau\coloneqq \min(t,\tau)$, we get (for any $t\in\N$) $$\E [X_0] = \E [X_{t\land \tau}] = \lim_{t\to\infty} \E[X_{t\land\tau}].$$
+		As $X_n$ is trivially bounded by $N$, the dominated convergence theorem implies
+		$$\E[X_0] = \E[\lim_{t\to\infty} X_{t\land \tau}] = \E[X_\tau].$$ 
+		
+		As $X_\tau$ can only attain the values $0$ and $N$, we have $\E[X_\tau] = N\cdot \P[X_\tau = N]$.
+		Furthermore with the initial configuration initialized according to $\Ber(p)$, we have $\E[X_0] = p\cdot N$.
+		Now, dividing by $N$ yields the result.
+	\end{proof}
+	
+	
+	\item In the continuous-time voter model, each vertex updates its opinion with rate $1$ by copying a neighbor's opinion.
+	Now, we want to bound the maximum stopping time $\tilde{\tau}$ for the continuous-time model:
+	\begin{claim}
+		For the continuous-time voter model, we have $\max_k \E_k[\tilde{\tau}] \leq N$.
+	\end{claim}
+	\begin{proof}
+		We can interpret the continuous-time voter model as follows:
+		At rate $1$ each vertex performs an update on its own.
+		This is equivalent to having update events at rate $N$ where at each event some random vertex performs an update.
+		Therefore, we can use the bound for the expectation on the number of update events in the discrete-time model, $\E_k[\tau]\leq (N-1)^2$, of Claim 7 as follows:
+		The expected stopping time $\E_k[\tilde{\tau}]$ of the continuous-time model is equal to the expected time of the discrete-time model divided by the event rate $N$, i.e. $\E_k[\tilde{\tau}] = \E_k[\tau]/N\leq (N-1)$.
+	\end{proof}
+\end{enumerate}
+\end{document}

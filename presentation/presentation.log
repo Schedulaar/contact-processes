@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.21)  8 DEC 2020 03:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.21)  8 DEC 2020 10:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2035,28 +2035,28 @@ Overfull \vbox (18.54315pt too high) detected at line 281
 [20
 
 ]
-Overfull \hbox (7.65668pt too wide) detected at line 346
+Overfull \hbox (7.4519pt too wide) detected at line 346
 []
  []
 
 [21
 
 ]
-Overfull \hbox (7.65668pt too wide) detected at line 346
+Overfull \hbox (7.4519pt too wide) detected at line 346
 []
  []
 
 [22
 
 ]
-Overfull \hbox (7.65668pt too wide) detected at line 346
+Overfull \hbox (7.4519pt too wide) detected at line 346
 []
  []
 
 [23
 
 ]
-Overfull \hbox (7.65668pt too wide) detected at line 346
+Overfull \hbox (7.4519pt too wide) detected at line 346
 []
  []
 
@@ -2203,7 +2203,7 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
 Here is how much of TeX's memory you used:
  32172 strings out of 492982
  617901 string characters out of 6134895
- 745972 words of memory out of 5000000
+ 745973 words of memory out of 5000000
  34892 multiletter control sequences out of 15000+600000
  45092 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2227,7 +2227,7 @@ ive/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chb7y.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on presentation.pdf (51 pages, 252972 bytes).
+Output written on presentation.pdf (51 pages, 253310 bytes).
 PDF statistics:
  517 PDF objects out of 1000 (max. 8388607)
  429 compressed objects within 5 object streams

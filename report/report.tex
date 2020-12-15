@@ -16,7 +16,8 @@
 \usepackage{multirow} 
 \usepackage{booktabs}
 \usepackage{graphicx}
-
+\usepackage{amsmath,amsfonts,amssymb,amsthm,bbm}
+\usepackage{cleveref}
 \usepackage{setspace}
 \usepackage{float}
 \usepackage{fancyhdr}
@@ -41,9 +42,13 @@
 \date{December 8, 2020}
 
 \theoremstyle{theorem}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\renewcommand{\theoremautorefname}{Theorem}
+\newcommand{\propositionautorefname}{Proposition}
 \newtheorem{proposition}[theorem]{Proposition}
+
 \newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\corollaryautorefname}{Corollary}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
@@ -53,6 +58,8 @@
 \newcommand{\Cont}{C}
 \newcommand{\diff}{\,\mathrm{d}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
 \renewcommand{\P}{\mathbb{P}}
 
 \DeclareMathOperator{\LGen}{\mathcal{L}}
@@ -139,7 +146,7 @@ The first of these question will be addressed using the graphical representation
 \end{figure}
 
 The contact process can be displayed very intuitively in a \emph{graphical representation}:
-An example can be seen in~\autoref{fig:graphical-rep} for the integer lattice $\Z$:
+An example can be seen in~\Cref{fig:graphical-rep} for the integer lattice $\Z$:
 We use the \emph{space-time} picture on $S\times [0,\infty)$. For each site, we generate \emph{heal events} at a unit exponential rate which are denoted as $\delta$ in the graph.
 Additionally we create \emph{infection events} in the form of arrows for each directed edge in the graph at rate $\lambda$.
 Then we call a path from $(x,s)$ to $(y,t)$ in this picture \emph{active}, if it only walks upwards in time at sites or along an infection arrow and never passes a heal event.
@@ -171,16 +178,74 @@ Hence $\lambda_c \geq \deg_{\max}^{-1} > 0$.
 Here, $G$ is a homogeneous tree, i.e. a graph in which each node has $d+1$ neighboring nodes.
 We discuss two main theorems.
 The first gives bounds for $\lambda_c$, in particular implying the possibility of weak survival:
-\begin{theorem}
+\begin{theorem}[Weak Survival]\label{thm:weak-survival}
 	The contact process on a homogeneous tree satisfies
 	$$\frac{1}{d+1} \leq \lambda_c \leq \frac{1}{d-1}$$
 \end{theorem}
 
 The second result shows that for large enough $d$, there might be weak without strong survival:
-\begin{theorem}
+\begin{theorem}[Bound for Strong Survival]\label{thm:strong-survival}
 	The critical value for strong survival on the homogeneous tree satisfies $$\lambda_s \geq \frac{1}{2\sqrt{d}}.$$
 	Therefore $\lambda_s > \lambda_c$ holds for $d\geq 6$.
 \end{theorem}
+
+To convince ourselves of these statements, we have to introduce the notion of superharmonic functions, which play a central in proving weak survival.
+
+\begin{definition}[Superharmonicity]
+	A function $f$ on $\Omega$ is called \emph{superharmonic} if all $t\geq0, \eta\in\Omega$ satisfy $\E_\eta\abs{f(\eta_t)} < \infty$ and $\E_\eta f(\eta_t) \leq f(\eta)$.
+\end{definition}
+
+\begin{proposition}\label{prop:weak-survival}
+	If there is a nonconstant bounded superharmonic function $f:\Omega\to \R$ satisfying $f(\emptyset)\geq f(\eta)$ for all $\eta\in\Omega$, the process survives weakly.
+\end{proposition}
+
+\begin{proof}[Sketch of Proof.]
+	Let $\eta(t)$ be the contact process starting from an $\eta\in\Omega$ and let $\zeta(t)$ be the same process, except that the rate going from $\emptyset$ to $\eta$ is $1$ (instead of $0$).
+	Then we can deduce $\E_\eta f(\zeta_t) \leq \E_\eta f(\eta_t)$.
+	Therefore, $f$ is also superharmonic w.r.t. $\zeta(t)$.
+	We observe, that $\zeta(t)$ is an irreducible Markov chain, i.e. $\P_\xi(\xi_t = \xi') > 0$ holds for all $\xi\neq\xi'$ in $\Omega$ and $t > 0$.
+	Hence, from the next paragraph, it follows that $\emptyset$ cannot be a recurring state for $\zeta$, what means, that $\P_\eta( \zeta_t = \emptyset \text{ for an increasing sequence $t$ to $\infty$ }) < 1$.
+	Therefore, $\emptyset$ cannot be a recurring state for $\eta(t)$ either, implying that $\eta(t)$ survives weakly.
+	
+	If we suppose, that $\emptyset$ is a recurring state for $\zeta(t)$, then any other state is recurring because $\zeta(t)$ is irreducible.
+	By the martingale theory $\E_\eta f(\zeta_t)$ converges with $\lim_{t\to\infty} \E_\eta f(\zeta_t) \leq f(\eta)$ a.s. 
+	Because $\zeta_t$ visits any configuration infinitely often for arbitrarily large $t$ almost surely, $f$ is constant.
+\end{proof}
+
+Hence, for proving~\Cref{thm:weak-survival} we ought to find a superharmonic function fulfilling $f(\emptyset) \geq f(\eta)$ for all $\eta.$
+Useful for that is the next statement, which follows from the Markov property.
+\begin{proposition}\label{prop:superharmon}
+	Suppose $f:\Omega \to \R$ is a bounded function satisfying $$\left. \frac{\diff}{\diff t} \E_\eta f(\eta_t) \right|_{t=0}\leq 0,$$
+	then $E_\eta f(\eta_t)$ is a decreasing function in $t$.
+\end{proposition}
+
+With these preliminaries, we can prove weak survival:
+\begin{proof}[Proof of~\Cref{thm:weak-survival}]
+We have already observed $\lambda_c \geq \deg_{\max}^{-1}$ in the last section.
+As our superharmonic function, we use $f(\eta)\coloneqq \rho^{\abs{\eta}}$ for some $\rho\in(0,1)$ we will specify later.
+We calculate $$\left.\frac{\diff}{\diff t}\E_\eta f(\eta_t) \right|_{t=0}
+= \left( \rho^{-1}\abs{\eta} - \lambda \cdot \abs{E_\eta} \right) (1-\rho) f(\eta),
+$$
+for non-empty $\eta$, where $E_\eta$ is the set of edges connecting nodes in $\eta$ with nodes in $S\setminus \eta$.
+As trees are acyclic, the number of edges connecting nodes inside $\eta$ is at most $\abs{\eta}-1$.
+Hence, we can bound $\abs{E_\eta}$ by
+$$\abs{E_\eta} \geq \abs{\eta} \cdot (d+1) - 2\cdot(\abs{\eta} - 1) = \abs{\eta}(d - 1) + 2 \geq \abs{\eta} (d-1).$$
+Therefore, the derivative of $\E_\eta f(\eta_t)$ is non-positive, if 
+$\rho^{-1} \geq \lambda(d-1)$ holds.
+For $\lambda > (d-1)^{-1}$, we can choose $\rho = (\lambda (d-1))^{-1}$ for which $f$ is superharmonic due to~\Cref{prop:superharmon}.
+Applying \Cref{prop:weak-survival} yields weak survival and thus $\lambda_c \leq (d-1)^{-1}$.
+\end{proof}
+
+With the same ideas, we can prove~\Cref{thm:strong-survival}:
+\begin{proof}[Sketch of Proof for \Cref{thm:strong-survival}]
+As strong survival involves not only the cardinality of infection, but also the location of the infection process, the superharmonic function we want to define must also depend on that.
+It turns out, that $f(\eta) \coloneqq \sum_{x\in\eta} \rho^{l(x)}$, where $l(x)$ is the level of $x$ w.r.t. some arbitrarily chosen node as root, does the job:
+We can calculate $$\left. \frac{\diff}{\diff t} \E_\eta f(\eta_t) \right|_{t=0} \leq \left( \lambda \cdot (d\rho + \rho^{-1}) - 1 \right)f(\eta),$$
+which is at most $0$, if we choose $\rho=\sqrt{d}^{-1}$ and $\lambda\leq(2\sqrt{d})^{-1}$.
+Applying \Cref{prop:superharmon} again, we find that $f$ is superharmonic and thus $\E_\eta f(\eta_t)$ converges almost surely for $t$ to $\infty$.
+In the event, that $x$ gets infected infinitely often for arbitrarily large $t$, this martingale has to change by at least $\rho^{l(x)}$ at arbitrarily large times $t$.
+Therefore, this event does almost surely not occur.
+\end{proof}
 
 \section{Results for Integer Lattices}
 

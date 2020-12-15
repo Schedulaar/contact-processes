@@ -249,7 +249,7 @@
 		\pause
 		A contact process is an \emph{attractive} spin system:
 		If $\eta\subseteq \zeta$, then
-			$$x \in \eta\, \Rightarrow\, c(x,\eta) \leq c(x,\zeta),\hspace{2em} x\notin\zeta \,\Rightarrow\, c(x,\eta) \geq c(x,\zeta) $$
+			$$x \notin \zeta\, \Rightarrow\, c(x,\eta) \leq c(x,\zeta),\hspace{2em} x\in\eta \,\Rightarrow\, c(x,\eta) \geq c(x,\zeta) $$
 			
 		\bigskip\pause
 		Hence, we have upper and lower invariant measures:
@@ -293,7 +293,7 @@
 			\onslide<4->{
 			If $\eta$ is initially infected, then
 			\vspace{-1em}\begin{align*}
-				\eta_t = \{ x\in S \mid\, &\exists \text{ active path from $(x,0)$}\\
+				\eta_t = \{ y\in S \mid\, &\exists \text{ active path from $(x,0)$}\\
 				&\text{to (y,t) for some $x\in\eta$} \}
 			\end{align*}}
 		\end{column}
@@ -560,7 +560,7 @@
 		\pause
 		\begin{theorem}[Bound for strong survival]
 			On a homogeneous tree, we have
-			$$\frac{1}{d+1} \leq \lambda_c \leq \frac{1}{d-1}$$
+			$$\lambda_s \geq \frac{1}{2\sqrt{d}}$$
 			In particular, $\lambda_c < \lambda_s$ for $d\geq 6$.
 		\end{theorem}
 	\end{frame}
