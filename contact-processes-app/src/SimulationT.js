@@ -55,7 +55,7 @@ class SimulationT extends React.Component {
   state = {
     t: 0,
     pause: true,
-    showControls: false,
+    showControls: true,
     lambda: 1 / (d - 1),
     infected
   }

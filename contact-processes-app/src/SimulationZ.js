@@ -55,7 +55,7 @@ class SimulationZ extends React.Component {
   state = {
     t: 0,
     pause: true,
-    showControls: false,
+    showControls: true,
     lambda: 2,
     points: [
       {infected: true, arrowsLeft: [], arrowsRight: [], deltas: []},
